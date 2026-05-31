@@ -4,6 +4,7 @@ const path = require('path');
 const express = require('express');
 const SpotifyWebApi = require('spotify-web-api-node');
 const { fetchLyrics } = require('./api/lyricsClient');
+const { translateLyrics } = require('./api/translationClient');
 const { parseLRC } = require('./utils/lrcParser');
 const fs = require('fs');
 
@@ -165,6 +166,13 @@ function createWindow() {
       openLogin();
     }
   });
+  
+  // Toggle translation shortcut
+  globalShortcut.register('CommandOrControl+Alt+T', () => {
+    if (mainWindow && !mainWindow.isDestroyed()) {
+      mainWindow.webContents.send('toggle-translation');
+    }
+  });
 }
 
 function openLogin() {
@@ -215,9 +223,10 @@ function startPolling() {
         
         mainWindow.webContents.send('track-changed', { artist, title });
         
-        fetchLyrics(artist, title).then(lrc => {
+        fetchLyrics(artist, title).then(async (lrc) => {
           const parsed = parseLRC(lrc);
-          mainWindow.webContents.send('lyrics-updated', parsed);
+          const translated = await translateLyrics(parsed);
+          mainWindow.webContents.send('lyrics-updated', translated);
         });
       }
       
