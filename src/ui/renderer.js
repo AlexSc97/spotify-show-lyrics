@@ -5,8 +5,34 @@ const container = document.getElementById('lyrics-container');
 const dragHandle = document.getElementById('drag-handle');
 const btnMinus = document.getElementById('btn-text-minus');
 const btnPlus = document.getElementById('btn-text-plus');
+const btnTranslateToggle = document.getElementById('btn-translate-toggle');
 
 let currentFontSize = 22;
+let showTranslation = true;
+
+function updateTranslateButton() {
+  if (btnTranslateToggle) {
+    if (showTranslation) {
+      btnTranslateToggle.classList.add('active-btn');
+      btnTranslateToggle.innerText = 'ES: ON';
+    } else {
+      btnTranslateToggle.classList.remove('active-btn');
+      btnTranslateToggle.innerText = 'ES: OFF';
+    }
+  }
+}
+
+if (btnTranslateToggle) {
+  btnTranslateToggle.addEventListener('click', () => {
+    showTranslation = !showTranslation;
+    updateTranslateButton();
+  });
+}
+
+ipcRenderer.on('toggle-translation', () => {
+  showTranslation = !showTranslation;
+  updateTranslateButton();
+});
 
 btnMinus.addEventListener('click', () => {
   currentFontSize = Math.max(12, currentFontSize - 2);
@@ -92,8 +118,20 @@ function renderLoop() {
     
     const activeLine = currentLyrics[activeIndex];
     if (activeLine) {
+      // Build HTML based on translation availability and toggle state
+      let newHtml = '';
+      if (showTranslation && activeLine.translation) {
+        newHtml = `
+          <div class="lyric-line active has-translation">
+            <div class="original-text">${activeLine.text}</div>
+            <div class="translated-text">${activeLine.translation}</div>
+          </div>
+        `;
+      } else {
+        newHtml = `<div class="lyric-line active">${activeLine.text}</div>`;
+      }
+      
       // Only update DOM if it changed to avoid flicker
-      const newHtml = `<div class="lyric-line active">${activeLine.text}</div>`;
       if (container.innerHTML !== newHtml) {
         container.innerHTML = newHtml;
       }
