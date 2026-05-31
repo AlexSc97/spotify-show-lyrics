@@ -1,0 +1,131 @@
+/* src/ui/styles.css */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+#drag-handle {
+  -webkit-app-region: drag;
+  background: rgba(0, 0, 0, 0.8);
+  color: #1DB954;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.controls button {
+  -webkit-app-region: no-drag;
+  background: #333;
+  color: white;
+  border: 1px solid #1DB954;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 2px 8px;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 2px;
+  margin-left: 10px;
+}
+
+.control-label {
+  font-size: 12px;
+  color: #ccc;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.control-btn {
+  -webkit-app-region: no-drag;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+#offset-display {
+  font-size: 13px;
+  width: 35px;
+  text-align: center;
+  margin: 0 4px;
+}
+
+.controls button:hover {
+  background: #1DB954;
+  color: black;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#lyrics-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 40px);
+  overflow: hidden;
+  padding: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.5;
+  text-shadow: 2px 2px 4px #000, -2px -2px 4px #000, 2px -2px 4px #000, -2px 2px 4px #000, 0 0 10px rgba(0,0,0,0.8);
+}
+
+.lyric-line {
+  opacity: 0.3;
+  transition: opacity 0.3s, font-size 0.3s;
+  position: absolute;
+  text-align: center;
+  width: 90%;
+}
+
+.lyric-line.active {
+  opacity: 1;
+  font-size: 1.2em;
+  color: #1DB954; /* Spotify Green */
+}
+
+.retry-btn {
+  background: #1DB954;
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.retry-btn:hover {
+  background: #1ed760;
+  transform: scale(1.05);
+}
+
+.retry-btn:active {
+  transform: scale(0.95);
+}

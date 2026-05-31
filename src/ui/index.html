@@ -1,0 +1,28 @@
+<!-- src/ui/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Content Security Policy to allow inline styles/scripts for Electron -->
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
+</head>
+<body>
+  <div id="drag-handle" class="hidden">
+    <span class="title">Arrastrar | Ctrl+Alt+L bloquear</span>
+    <div style="flex:1"></div> <!-- spacer -->
+    <div class="control-group">
+      <span class="control-label">Atraso</span>
+      <button id="btn-offset-minus" class="control-btn" title="Adelantar letra">◀</button>
+      <span id="offset-display">0.0s</span>
+      <button id="btn-offset-plus" class="control-btn" title="Atrasar letra">▶</button>
+    </div>
+    <div class="control-group">
+      <span class="control-label">Letra</span>
+      <button id="btn-text-minus" class="control-btn">A-</button>
+      <button id="btn-text-plus" class="control-btn">A+</button>
+    </div>
+  </div>
+  <div id="lyrics-container">Esperando música de Spotify...</div>
+  <script src="renderer.js"></script>
+</body>
+</html>

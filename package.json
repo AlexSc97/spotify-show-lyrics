@@ -1,0 +1,30 @@
+{
+  "name": "proyecto-spotify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "node-forge": "^1.4.0",
+    "selfsigned": "^5.5.0"
+  },
+  "dependencies": {
+    "axios": "^1.16.1",
+    "dotenv": "^17.4.2",
+    "electron": "^42.1.0",
+    "express": "^5.2.1",
+    "google-translate-api-x": "^10.7.3",
+    "spotify-web-api-node": "^5.0.2"
+  }
+}
