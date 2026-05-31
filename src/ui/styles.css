@@ -129,3 +129,30 @@ body {
 .retry-btn:active {
   transform: scale(0.95);
 }
+
+/* Premium translation styles */
+.control-btn.active-btn {
+  background: rgba(29, 185, 84, 0.3) !important;
+  color: #1DB954 !important;
+  border: 1px solid #1DB954 !important;
+}
+
+.lyric-line.active.has-translation {
+  font-size: 1.1em; /* slightly adjust size to fit both nicely */
+}
+
+.original-text {
+  color: #1DB954; /* Spotify Green */
+  font-weight: bold;
+  margin-bottom: 6px;
+  text-shadow: 2px 2px 4px #000, -2px -2px 4px #000, 2px -2px 4px #000, -2px 2px 4px #000;
+}
+
+.translated-text {
+  color: #e5e5e5; /* Soft light gray */
+  font-size: 0.78em; /* Elegantly smaller */
+  font-weight: normal;
+  margin-top: 4px;
+  line-height: 1.3;
+  text-shadow: 2px 2px 4px #000, -2px -2px 4px #000, 2px -2px 4px #000, -2px 2px 4px #000;
+}
